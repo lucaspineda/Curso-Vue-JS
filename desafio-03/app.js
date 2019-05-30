@@ -12,6 +12,6 @@ new Vue({
     watch: {
         resultado(){
             setTimeout(() => { this.valor = 0},5000)
-        }
+        }// após a função ser chamada ela irá zerar o valor de VALOR após 5 segundos
     }
 });
