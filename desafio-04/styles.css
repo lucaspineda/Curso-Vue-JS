@@ -24,11 +24,16 @@
 .red {
 	color: red
 }
-.progress {
+.progress-bar {
 	border-style: solid;
     max-width: 190px;
 	/* width: 10px; */
 	height: 15px;
 	margin-top: 10px;
 	margin-bottom: 10px
+}
+
+.progress {
+	height: 100%;
+	background-color: red
 }

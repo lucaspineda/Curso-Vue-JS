@@ -30,8 +30,8 @@
 	<h2>#04</h2>
 	<div>
 		<input v-model="classeDinamica2" type="text">
-		<!-- <input v-model="ativa" type="text"> -->
-		<div :class="classeDinamica2"> OUTRO EXEMPLO</div>
+		<input @input="setRed" type="text">
+		<div :class="[classeDinamica2, {red: ativar}]"> OUTRO EXEMPLO</div>
 	</div>
 
 	<!-- 5) Repita 3) mas utilizando estilos ao invés de classes CSS.
@@ -47,7 +47,9 @@
 	<h2>#06</h2>
 	<div>
 		<button @click="iniciarProgresso">Iniciar</button>
-		<div class="progress" :style="{width: progresso}"></div>
+		<div class="progress-bar" >
+			<div class="progress" :style="{width}"></div>
+		</div>
 	</div>
 </div>
 <script src="app.js"></script>

@@ -8,8 +8,9 @@ new Vue({
 		classeDinamica: '',
 		classeDinamica2: '',
 		estiloDinamico: '',
-		ativar: false,
-		progresso: 20
+		ativar: true,
+		width: '0',
+
 	},
 	methods: {
 		iniciarEfeito() {
@@ -22,8 +23,25 @@ new Vue({
 			} , 5000)
 
 		},
+		setRed(event){
+			if(event.target.value == 'true'){
+				this.ativar = true
+			}else if(event.target.value == 'false'){
+				this.ativar = false
+			}
+
+		},
 		iniciarProgresso() {
-			setInterval(() => this.progresso++, 100)	
+			let valor = 0;
+			const temporizador = setInterval(() =>{
+			valor ++;
+			this.width = `${valor}%`
+			if(valor === 100){
+				clearInterval(temporizador)
+			}
+		}
+			, 100)
+			
 		}
 	},
 	computed: {
