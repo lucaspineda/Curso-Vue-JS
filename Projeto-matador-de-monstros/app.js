@@ -3,8 +3,6 @@ new Vue({
 	data: {
 		started: false,
 		win: null,
-		// width1: '100',
-		// width2: '100',
 		vidaJogador: 100,
 		vidaMonstro: 100
 	},
@@ -33,17 +31,15 @@ new Vue({
 
 			this.vidaJogador = this.vidaJogador - valorJogador;
 			this.vidaMonstro = this.vidaMonstro - valorMonstro;
-		
-			// this.width1 = `${this.vidaJogador}%`;
-			// this.width2 = `${this.vidaMonstro}%`;
 			this.checkIfPlayerIsDead();
 			this.checkIfMonsterIsDead();
 		},
 		checkIfPlayerIsDead(){
 			if(this.vidaJogador <= 0){
-				// width1 = '0';
 				this.win = false;
 				this.started = false;
+				this.vidaJogador = 0;
+				console.log(this.vidaJogador)
 			}
 		},
 		checkIfMonsterIsDead(){
