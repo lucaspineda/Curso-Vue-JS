@@ -13,7 +13,7 @@ new Vue({
 			notas: [7.67, 8.33, 6.98, 9.21]
 		},
 		
-		um: true,
+		expressao: true,
 		outro: true,
 	}
 });

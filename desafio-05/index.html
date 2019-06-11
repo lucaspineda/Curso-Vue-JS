@@ -4,11 +4,11 @@
     para ver a diferença -->
   <h2>#01</h2>
   <div>
-    <button @click="um = !um">Alternar</button>
-    <p v-if="um">Você quer me ver ...</p>
+    <button @click="expressao = !expressao">Alternar</button>
+    <p v-if="expressao">Você quer me ver ...</p>
     <p v-else>...ou eu</p>
-    <p v-show="um">Você quer me ver ...</p>
-    <p v-show="!um">...ou eu</p>
+    <p v-show="expressao">Você quer me ver ...</p>
+    <p v-show="!expressao">...ou eu</p>
     <!-- A diferença é que o v-show estiliza o elemento para display none enquanto o
     v-if retira de fato o elemento do html  -->
   </div>
@@ -41,14 +41,17 @@
 		}
     (dica: use v-for e v-if na resolução) -->
   <h2>#04</h2>
-  <ul v-for="aluno in aluno">
+  <ul>
     <li v-for="valor in aluno">
-    {{ valor }} dsf
-    </li>
-  </ul>
-  <ul v-if="true" v-for="aluno in aluno">
-    <li v-for="valor in aluno">
-    {{ valor }}
+      <template v-if="!Array.isArray(valor)">
+      {{ valor }}
+      </template>
+      <template v-else>
+        Notas:
+        <ul>
+          <li v-for="nota in valor" > {{ nota }} </li>
+        </ul>
+      </template>
     </li>
   </ul>
 </div>
