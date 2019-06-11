@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+
+<div id="game">
+  <div>
+    <div>
+      <h1>Jogador 1</h1>
+      <div class="lifeBar">
+        <div class="life" :style="{width: width1()}"></div>
+        <div> teste </div>
+      </div>
+    </div>
+    <div>
+        <h1>Jogador 2</h1>
+        <div class="lifeBar">
+          <div class="life" :style="{width: width2()}"></div>
+          <div> teste 2 </div>
+        </div>
+      </div>
+  </div>
+  <template v-if="win">
+    <div>Você ganhou</div>
+  </template>
+  <template v-if="win === false">
+      <div>Você Perdeu</div>
+    </template>
+  <template v-if="!started">
+    <div class="actions">
+      <button @click="startGame" >Iniciar Jogo</button>
+    </div>
+  </template>
+  <template v-if="started">
+      <div class="actions">
+        <button @click="attack">ATAQUE</button>
+        <button>ATAQUE ESPECIAL</button>
+        <button>CURAR</button>
+        <button @click="giveUp">DESISTIR</button>
+      </div>
+  </template>
+
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script src="app.js"></script>
+</body>
+</html>
