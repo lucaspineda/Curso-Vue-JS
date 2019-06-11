@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
     <script src="https://unpkg.com/vue"></script>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 <body>
 
@@ -14,16 +13,16 @@
     <div>
       <h1>Jogador 1</h1>
       <div class="lifeBar">
-        <div class="life" :style="{width: width1()}"></div>
-        <div> teste </div>
+        <div class="life" :style="{width: vidaJogadorEmPorc()}"></div>
       </div>
+      <div> {{vidaJogadorEmPorc()}} </div>
     </div>
     <div>
         <h1>Jogador 2</h1>
         <div class="lifeBar">
-          <div class="life" :style="{width: width2()}"></div>
-          <div> teste 2 </div>
+          <div class="life" :style="{width: vidaMonstroEmPorc()}"></div>
         </div>
+        <div> {{ vidaMonstroEmPorc() }} </div>
       </div>
   </div>
   <template v-if="win">

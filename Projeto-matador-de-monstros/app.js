@@ -7,10 +7,10 @@ new Vue({
 		vidaMonstro: 100
 	},
 	methods: {
-		width1() { 
+		vidaJogadorEmPorc() { 
 			return this.vidaJogador.toString() + '%'
 		},
-		width2() { 
+		vidaMonstroEmPorc() { 
 			return this.vidaMonstro.toString() + '%'
 		},
 		giveUp(){
