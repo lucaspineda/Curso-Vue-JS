@@ -40,7 +40,7 @@
   <template v-if="started">
       <div class="actions">
         <button @click="attack">ATAQUE</button>
-        <button>ATAQUE ESPECIAL</button>
+        <button @click="specialAttack">ATAQUE ESPECIAL</button>
         <button>CURAR</button>
         <button @click="giveUp">DESISTIR</button>
       </div>
