@@ -2,63 +2,37 @@ new Vue({
 	el: '#game',
 	data: {
 		started: false,
-		win: null,
-		vidaJogador: 100,
-		vidaMonstro: 100
+		playerLife: 100,
+		monsterLife: 100
 	},
 	methods: {
-		vidaJogadorEmPorc() { 
-			return this.vidaJogador.toString() + '%'
+		startGame() {
+			this.started = true;
+			this.playerLife = 100;
+			this.monsterLife = 100;
 		},
-		vidaMonstroEmPorc() { 
-			return this.vidaMonstro.toString() + '%'
+		attack(special) {
+			this.hurt('playerLife', 7,12, false);
+			this.hurt('monsterLife', 5,10, special)
 		},
-		giveUp(){
-			this.started = false;
-			this.win = false;
-			this.vidaJogador = 0;
+		hurt(atr, min, max, especial) {
+			const plus = especial ? 5 : 0;
+			const hurt = this.getRandom(min + plus, max + plus);
+			this[atr] = Math.max (this[atr] - hurt, 0)
 		},
-		startGame(){
-			this.started = !this.started;
-			this.win = null;
-			this.vidaJogador = 100;
-			this.vidaMonstro = 100;
-		},
-		attack(){
-			let valorJogador, valorMonstro = 0
-
-			valorJogador = 18
-			valorMonstro = 7
-
-			this.vidaJogador = this.vidaJogador - valorJogador;
-			this.vidaMonstro = this.vidaMonstro - valorMonstro;
-			this.checkIfPlayerIsDead();
-			this.checkIfMonsterIsDead();
-		},
-		specialAttack(){
-			let valorJogador, valorMonstro = 0
-
-			valorJogador = 7
-			valorMonstro = 18
-
-			this.vidaJogador = this.vidaJogador - valorJogador;
-			this.vidaMonstro = this.vidaMonstro - valorMonstro;
-			this.checkIfPlayerIsDead();
-			this.checkIfMonsterIsDead();
-		},
-		checkIfPlayerIsDead(){
-			if(this.vidaJogador <= 0){
-				this.win = false;
-				this.started = false;
-				this.vidaJogador = 0;
-			}
-		},
-		checkIfMonsterIsDead(){
-			if(this.vidaMonstro <=0 ){
-				this.win = true;
-				this.started = false;
-				this.vidaMonstro = 0;
-			}
+		getRandom(min, max){
+			const random = Math.random() * (max - min) + min
+			return Math.round(random)
+		}
+	},
+	computed: {
+		hasResult(){
+			return this.playerLife == 0 || this.monsterLife == 0
+		}
+	},
+	watch: {
+		hasResult(value) {
+			if(value) this.started = false
 		}
 	}
 });

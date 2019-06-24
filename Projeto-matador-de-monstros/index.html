@@ -9,42 +9,42 @@
 <body>
 
 <div id="game">
-  <div>
-    <div>
+  <div class="panel scores">
+    <div class="score">
       <h1>Jogador 1</h1>
       <div class="lifeBar">
-        <div class="life" :style="{width: vidaJogadorEmPorc()}"></div>
-      </div>
-      <div> {{vidaJogadorEmPorc()}} </div>
-    </div>
-    <div>
-        <h1>Jogador 2</h1>
-        <div class="lifeBar">
-          <div class="life" :style="{width: vidaMonstroEmPorc()}"></div>
+        <div class="life" 
+          :class="{danger: playerLife < 20}" 
+          :style="{width: playerLife + '%'}">
         </div>
-        <div> {{ vidaMonstroEmPorc() }} </div>
+      </div>
+      <div> {{ playerLife }}% </div>
+    </div>
+    <div class="score">
+        <h1>Monstro</h1>
+        <div class="lifeBar">
+          <div class="life" 
+            :class="{danger: monsterLife < 20}" 
+            :style="{width: monsterLife + '%'}">
+          </div>
+        </div>
+        <div> {{ monsterLife }}% </div>
       </div>
   </div>
-  <template v-if="win">
-    <div>Você ganhou</div>
-  </template>
-  <template v-if="win === false">
-      <div>Você Perdeu</div>
+  <div v-if="hasResult" class="panel result">
+    <div v-if="monsterLife === 0" class="win">Você ganhou!!!</div>
+    <div v-if="playerLife === 0" class="lose">Você Perdeu :(</div>
+  </div>
+  <div class="panel actions">
+    <template v-if="started">
+        <button class="btn attack" @click="attack(false)">ATAQUE</button>
+        <button class="btn special-attack" @click="attack(true)">ATAQUE ESPECIAL</button>
+        <button class="btn heal" @click="">CURAR</button>
+        <button class="btn giveUp" @click="started = façse">DESISTIR</button>
     </template>
-  <template v-if="!started">
-    <div class="actions">
-      <button @click="startGame" >Iniciar Jogo</button>
-    </div>
-  </template>
-  <template v-if="started">
-      <div class="actions">
-        <button @click="attack">ATAQUE</button>
-        <button @click="specialAttack">ATAQUE ESPECIAL</button>
-        <button>CURAR</button>
-        <button @click="giveUp">DESISTIR</button>
-      </div>
-  </template>
-
+    <button v-else class="btn start" @click="startGame">INICIAR JOGO</button>
+  </div>
+  <div class="panel logs"></div>
 </div>
 <script src="https://unpkg.com/vue"></script>
 <script src="app.js"></script>
