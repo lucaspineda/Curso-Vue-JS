@@ -23,6 +23,15 @@ new Vue({
 		getRandom(min, max){
 			const random = Math.random() * (max - min) + min
 			return Math.round(random)
+		},
+		healAndHurt(){
+			this.hurt('playerLife', 0,1, false);
+
+			this.heal(5,10)
+		},
+		heal(min, max){
+			const heal = this.getRandom(min, max);
+			this.playerLife = Math.min(this.playerLife + heal, 100)
 		}
 	},
 	computed: {
