@@ -44,7 +44,7 @@
     </template>
     <button v-else class="btn start" @click="startGame">INICIAR JOGO</button>
   </div>
-  <div class="panel logs"></div>
+  <div v-if="logs.length" class="panel logs"></div>
 </div>
 <script src="https://unpkg.com/vue"></script>
 <script src="app.js"></script>

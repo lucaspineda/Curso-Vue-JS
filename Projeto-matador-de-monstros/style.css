@@ -75,3 +75,9 @@
     background-color: rgb(202, 33, 33);
     color: aliceblue;
 }
+.player {
+    border: solid 1px green
+}
+.monster { 
+    border: solid 1px red
+}
