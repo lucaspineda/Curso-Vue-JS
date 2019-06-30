@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    {{ titulo1 }} {{ novaInfo }}
+    <!-- será exibido apenas o titulo 1 referente a "el" app1 da isntancia do Vue -->
+    <button @click="incrementa()">+</button>
+</div>
+
+
+<script>
+    vm1 = new Vue({
+        el: '#app',
+        data: {
+            titulo1: "Título 1"
+        },
+        methods: {
+            incrementa(){
+                this.titulo1 += "????"
+            }
+        }
+    })
+
+vm1.novaInfo = "teste"
+console.log(vm1.novaInfo)
+
+// estratégia recomendada quando é trabalhado com outro famework, e assim pode ser melhor controlado
+</script>
