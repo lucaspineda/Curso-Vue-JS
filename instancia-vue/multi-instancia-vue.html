@@ -1,0 +1,42 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app1">
+    {{ titulo1 }}
+    <!-- será exibido apenas o titulo 1 referente a "el" app1 da isntancia do Vue -->
+    <button @click="incrementa()">+</button>
+</div>
+<div id="app2">
+    {{ titulo2 }}
+    <button @click="incrementa">+</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app1',
+        data: {
+            titulo1: "Título 1"
+        },
+        methods: {
+            incrementa(){
+                this.titulo1 += "!!!"
+            }
+        }
+    })
+    new Vue({
+        el: '#app2',
+        data: {
+            titulo2: "Título 2"
+        },
+        methods: {
+            incrementa(){
+                this.titulo2 += "!!!"
+            }
+        }
+    })
+
+
+// esta estratégia não é recomendada para utilizar em aplicações criadas apenas com o VUE
+// é recomendada para casos que a página é criada com outras tecnologias, e se utiliza o VUE para controlar
+    
+</script>
