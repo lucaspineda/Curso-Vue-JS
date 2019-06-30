@@ -1,0 +1,44 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app1">
+    {{ titulo1 }}
+    <!-- será exibido apenas o titulo 1 referente a "el" app1 da isntancia do Vue -->
+    <button @click="incrementa()">+</button>
+</div>
+<div id="app2">
+    {{ titulo2 }}
+    <button @click="incrementa">+</button>
+</div>
+
+<script>
+    vm1 = new Vue({
+        el: '#app1',
+        data: {
+            titulo1: "Título 1"
+        },
+        methods: {
+            incrementa(){
+                vm2.titulo2 += "????"
+            }
+        }
+    })
+    vm2 = new Vue({
+        el: '#app2',
+        data: {
+            titulo2: "Título 2"
+        },
+        methods: {
+            incrementa(){
+                vm1.titulo1 += "!!!"
+            }
+        }
+    })
+
+    // esta função externa muda dados do componente do vue
+    setTimeout(() => 
+    vm1.titulo1 = "modificando dados de forma externa", 1000)
+        
+
+// estratégia recomendada quando é trabalhado com outro famework, e assim pode ser melhor controlado
+</script>
