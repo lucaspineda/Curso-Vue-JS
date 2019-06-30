@@ -75,9 +75,31 @@
     background-color: rgb(202, 33, 33);
     color: aliceblue;
 }
+
+
+/* área dos logs */
+.logs ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.logs ul li{
+    display: flex;
+    justify-content: center;
+    margin: 4px 0px;
+    padding: 3px 0px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
 .player {
-    border: solid 1px green
+    background-color: #4253afaa;
+    color: #fff;
 }
 .monster { 
-    border: solid 1px red
+    background-color: #e51c23aa;
+    color: #fff;
 }

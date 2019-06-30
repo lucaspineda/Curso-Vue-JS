@@ -21,7 +21,7 @@ new Vue({
 			const plus = especial ? 5 : 0;
 			const hurt = this.getRandom(min + plus, max + plus);
 			this[atr] = Math.max (this[atr] - hurt, 0)
-			this.registrarLogs(`${source} atingiu ${target}`, cls)
+			this.registrarLogs(`${source} atingiu ${target} com ${hurt}`, cls);
 		},
 		getRandom(min, max){
 			const random = Math.random() * (max - min) + min
@@ -34,7 +34,7 @@ new Vue({
 		heal(min, max){
 			const heal = this.getRandom(min, max);
 			this.playerLife = Math.min(this.playerLife + heal, 100)
-			this.registrarLogs(`Jogador ganhou ${heal} de vida`.valueOf, 'player')
+			this.registrarLogs(`Jogador ganhou ${heal} de vida`, 'player')
 		},
 		registrarLogs(text, cls){
 			this.logs.unshift( {text, cls} )

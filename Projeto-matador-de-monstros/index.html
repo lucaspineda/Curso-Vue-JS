@@ -40,11 +40,19 @@
         <button class="btn attack" @click="attack(false)">ATAQUE</button>
         <button class="btn special-attack" @click="attack(true)">ATAQUE ESPECIAL</button>
         <button class="btn heal" @click="healAndHurt">CURAR</button>
-        <button class="btn giveUp" @click="started = façse">DESISTIR</button>
+        <button class="btn giveUp" @click="started = false">DESISTIR</button>
     </template>
     <button v-else class="btn start" @click="startGame">INICIAR JOGO</button>
   </div>
-  <div v-if="logs.length" class="panel logs"></div>
+  <div v-if="logs.length" class="panel logs">
+    <ul>
+      <li v-for="register in logs" 
+      :class="register.cls"
+      class="log"> 
+      {{ register.text }}
+      </li>
+    </ul>
+  </div>
 </div>
 <script src="https://unpkg.com/vue"></script>
 <script src="app.js"></script>
