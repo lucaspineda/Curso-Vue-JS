@@ -1,9 +1,7 @@
 <template>
 <div class="app">
     <h1>Contadores:</h1>
-    <app-contador />
-    <app-contador />
-    <app-contador />
+    <app-contadores v-for="c in 5" :key="c" />
 </div>
 </template>
 
