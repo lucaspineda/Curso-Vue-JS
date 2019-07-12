@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+
+<!-- O código abaixo é um exemplo de criação de componentes com Vue -->
+
+<div id="app">
+    <contador></contador>
+    <contador></contador>
+    <contador></contador>
+</div>
+
+<script>
+
+    Vue.component('contador', {
+        template: `
+        <div>
+            <span> {{ contador }}</span>
+            <button @click="contador++">+</button>
+            <button @click="contador--">-</button>
+        </div>
+        `,
+        data() {
+            return {
+                contador: 0
+            }
+        }
+    })
+
+const vm = new Vue({
+    el: '#app',
+})
+</script>
