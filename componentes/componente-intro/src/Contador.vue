@@ -20,9 +20,7 @@ export default {
         subtrair() {
             this.contador--
         }
-
     }
-
 }
 </script>
 
@@ -33,7 +31,8 @@ span {
         height: 30px;
         padding: 5px 25px;
 }
-button {
+/* seletor gerado pelo Vue em hash para gerar o estilo apenas para este componete */
+button[data-v-6cbbf471] {
         height: 30px;
         width: 30px;
         border-radius: 15px;

@@ -1,8 +1,7 @@
 <template>
     <div>
-        <app-contador />
-        <app-contador />
-        <app-contador />
+        <h1>Vai pegar a borda também</h1>
+        <app-contador v-for="c in 5" :key="c" />
         <hr>
     </div>
 </template>
@@ -17,6 +16,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+div {
+    border: 1px solid red;
+}
 
 </style>
