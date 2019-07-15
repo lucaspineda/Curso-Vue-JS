@@ -1,7 +1,7 @@
 <template>
 	<v-app>
 		<app-menu></app-menu>
-		<app-header />
+		<Header />
 		<app-carousel />
 		<app-footer />
 	</v-app>
@@ -16,7 +16,8 @@ import Footer from './components/template/Footer.vue'
 
 export default {
 	components: {
-		'app-header': Header,
+		// ]segue as diferentes formas de nomeação de componentes
+		Header,
 		'app-menu': Menu,
 		'app-carousel': Carousel,
 		'app-footer': Footer
