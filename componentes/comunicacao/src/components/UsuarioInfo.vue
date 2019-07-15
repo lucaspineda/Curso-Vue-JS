@@ -8,9 +8,13 @@
 
 <script>
 export default {
-    props: [
-        'nome'
-    ],
+    props: {
+        nome: {
+            type: String,
+            required: true,
+            // default: "Anonimo" -- usado para trazer o valor default caso o atributo não esteja preenchido
+        }
+    },
     methods: {
         // as props podem ser trabalhadas como qualquer atributo, inclusive é possivel criar metodos com elas
         inverterNome() {
