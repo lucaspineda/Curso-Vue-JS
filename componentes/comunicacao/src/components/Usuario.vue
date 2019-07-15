@@ -5,7 +5,7 @@
         <button> Alterar nome</button>
         <hr>
         <div class="componentes">
-            <app-usuario-info />
+            <app-usuario-info v-bind:nome="nome"/>
             <app-usuario-editar />
         </div>
     </div>
