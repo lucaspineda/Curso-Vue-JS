@@ -16,7 +16,7 @@ import Footer from './components/template/Footer.vue'
 
 export default {
 	components: {
-		// ]segue as diferentes formas de nomeação de componentes
+		// segue as diferentes formas de nomeação de componentes
 		Header,
 		'app-menu': Menu,
 		'app-carousel': Carousel,
