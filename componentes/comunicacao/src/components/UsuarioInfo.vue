@@ -13,6 +13,9 @@ export default {
             type: String,
             required: true,
             // default: "Anonimo" -- usado para trazer o valor default caso o atributo não esteja preenchido
+            default: function() {
+                return Array(10).fill(0).join(',')
+            }
         }
     },
     methods: {
