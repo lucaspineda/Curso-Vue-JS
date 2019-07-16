@@ -3,14 +3,19 @@
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
         <p>Nome é {{ nome }}</p>
+        <p>Idade é {{ idade }}</p>        
         <button @click="alterarNome()"> Alterar nome</button>
         <hr>
         <div class="componentes">
             <app-usuario-info 
-                v-bind:nome="nome"
+                :idade="idade"
+                :nome="nome"
                 @nomeMudou="nome = $event.novo + ' ' + $event.antigo"
+                
                 :reiniciarFn="reiniciarNome" />
-            <app-usuario-editar />
+            <app-usuario-editar  
+                :idade="idade"
+                @idadeMudou="idade = $event" />
         </div>
     </div>
 </template>
@@ -23,7 +28,8 @@ export default {
     components: { AppUsuarioInfo, AppUsuarioEditar },
     data() {
         return {
-            nome: 'Pedro'
+            nome: 'Pedro',
+            idade: 21
         }
     },
     methods: {
