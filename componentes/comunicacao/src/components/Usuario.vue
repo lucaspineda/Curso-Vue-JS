@@ -11,11 +11,9 @@
                 :idade="idade"
                 :nome="nome"
                 @nomeMudou="nome = $event.novo + ' ' + $event.antigo"
-                
                 :reiniciarFn="reiniciarNome" />
             <app-usuario-editar  
-                :idade="idade"
-                @idadeMudou="idade = $event" />
+                :idade="idade" />
         </div>
     </div>
 </template>
@@ -40,6 +38,7 @@ export default {
             this.nome = 'Pedro'
         }
     },
+    
 }
 </script>
 
