@@ -8,7 +8,8 @@
         <div class="componentes">
             <app-usuario-info 
                 v-bind:nome="nome"
-                @nomeMudou="nome = $event.novo + ' ' + $event.antigo" />
+                @nomeMudou="nome = $event.novo + ' ' + $event.antigo"
+                :reiniciarFn="reiniciarNome" />
             <app-usuario-editar />
         </div>
     </div>
@@ -28,6 +29,9 @@ export default {
     methods: {
         alterarNome(){
             this.nome = 'Ana'
+        },
+        reiniciarNome(){
+            this.nome = 'Pedro'
         }
     },
 }
