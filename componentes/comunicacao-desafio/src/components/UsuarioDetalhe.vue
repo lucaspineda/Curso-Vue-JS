@@ -10,12 +10,23 @@
 </template>
 
 <script>
+import EventBus from '@/eventBus'
+
 export default {
     data() {
         return {
             usuario: null
         }
-    }
+    },
+    created() {
+        EventBus.onUserSent(usuario => {
+            this.usuario = usuario
+            })
+    },
+    destroyed() {
+        console.log('Executando o destroyed()')
+    },
+
 }
 </script>
 
