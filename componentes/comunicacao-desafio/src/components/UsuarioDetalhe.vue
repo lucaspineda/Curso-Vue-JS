@@ -23,9 +23,6 @@ export default {
             this.usuario = usuario
             })
     },
-    destroyed() {
-        console.log('Executando o destroyed()')
-    },
 
 }
 </script>
