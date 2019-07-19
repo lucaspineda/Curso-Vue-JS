@@ -6,9 +6,9 @@
         </span>
         <!-- passando html para outro comp via slot -->
         <Citacao>
-            <p> {{ citacoes[indice].texto }}</p>
-            <h1> {{ citacoes[indice].autor }}</h1>
-            <p> {{ citacoes[indice].fonte }}</p>
+            <p slot="texto"> {{ citacoes[indice].texto }}</p>
+            <h1 slot="autor"> {{ citacoes[indice].autor }}</h1>
+            <p slot="fonte"> {{ citacoes[indice].fonte }}</p>
         </Citacao>
     </div>
 </template>
