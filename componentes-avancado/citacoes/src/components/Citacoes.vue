@@ -7,7 +7,7 @@
         <!-- passando html para outro comp via slot -->
         <Citacao>
             <p> {{ citacoes[indice].texto }}</p>
-            <p> {{ citacoes[indice].autor }}</p>
+            <h1> {{ citacoes[indice].autor }}</h1>
             <p> {{ citacoes[indice].fonte }}</p>
         </Citacao>
     </div>
@@ -51,5 +51,10 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    /* o elemento irá reconhecer esta estilo, pois ele pertence a este componente  */
+    /* a cor vermelha também irá funcionar, mas apenas se aqui estiver vazio */
+    h1 {
+        color: green;
     }
 </style>
