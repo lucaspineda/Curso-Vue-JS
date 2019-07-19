@@ -17,6 +17,13 @@
 import Citacao from './Citacao.vue';
 
 export default {
+    activated() {
+        console.log('activated')
+    },
+    deactivated() {
+        console.log('deactivated')        
+    },
+
     components: {
         Citacao,
     },
