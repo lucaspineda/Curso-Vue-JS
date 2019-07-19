@@ -17,12 +17,13 @@
 import Citacao from './Citacao.vue';
 
 export default {
-    activated() {
-        console.log('activated')
-    },
-    deactivated() {
-        console.log('deactivated')        
-    },
+    // estesmétodossó funcionam quando o keep alivee stá sendo usado
+    // activated() {
+    //     console.log('activated')
+    // },
+    // deactivated() {
+    //     console.log('deactivated')        
+    // },
 
     components: {
         Citacao,
