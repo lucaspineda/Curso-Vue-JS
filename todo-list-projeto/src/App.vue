@@ -15,7 +15,19 @@ export default {
 	data(){
 		return {
 			taskList: [
-				{name: 'Lavar a louça', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
+				{name: 'Estudar Vue', pending: false},
+				{name: 'Lavar a louça', pending: true},
 				{name: 'Estudar Vue', pending: false},
 			]
 		}
