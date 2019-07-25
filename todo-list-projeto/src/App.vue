@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
+		<NewTask @sendTask="addTask"/>
 		<TaskGrid :taskList="taskList" />
 	</div>
 </template>
@@ -8,31 +9,29 @@
 <script>
 
 import TaskGrid from './components/TaskGrid.vue'
+import NewTask from './components/NewTask.vue'
+// import EventBus from '@/eventBus'
 
 export default {
 
-	components: { TaskGrid },
+	components: { TaskGrid, NewTask },
 	data(){
 		return {
 			taskList: [
 				{name: 'Lavar a louça', pending: true},
 				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
-				{name: 'Lavar a louça', pending: true},
-				{name: 'Estudar Vue', pending: false},
 			]
 		}
-	}
-
+	},
+	methods: {
+		addTask(name) {
+			console.log('caiu aquiii')
+				this.taskList.push({
+					name: name,
+					pending: true,
+				}) 
+		}
+	},
 }
 </script>
 

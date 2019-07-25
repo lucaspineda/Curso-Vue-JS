@@ -1,11 +1,10 @@
 <template>
-    <div class="box pending" :class="{done: task.pending}">
+    <div class="box pending" :class="{done: !task.pending}">
         {{ task.name }}
     </div>
 </template>
 
 <script>
-// import TaskGrid from './TaskGrid'
 
 export default {
     props: {

@@ -3,6 +3,7 @@
         <!-- o nome da variavel após os dois pontos (:) irá determinar o nome que deve ser usado no outro componente -->
         <TaskBox v-for="taske in taskList" :key="taske.name" :task="taske"/>
     </div>
+    
     <div class="no-box" v-else>Não há tarefas cadastradas</div>
 </template>
 
@@ -17,7 +18,15 @@ export default {
             type: Array,
             required:true,
         }
-    }
+    },
+    // methods: {
+    //     teste(){
+    //         console.log(this.taskList)
+    //     }
+    // },
+    // created() {
+    //     console.log(this.taskList)
+    // },
 
 }
 </script>
