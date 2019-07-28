@@ -2,11 +2,11 @@ import Vue from 'vue'
 
 export default new Vue({
     methods: {
-        sendTask(task){
-            this.$emit('sendTask', task)
+        sendDeletedTask(taskName){
+            this.$emit('deletedTask', taskName)
         },
-        receiveTask(callback){
-            this.$on('sendTask', callback)
+        receiveDeletedTask(callback){
+            this.$on('deletedTask', callback)
         }
     },
 })

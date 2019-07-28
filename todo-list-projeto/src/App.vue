@@ -10,7 +10,7 @@
 
 import TaskGrid from './components/TaskGrid.vue'
 import NewTask from './components/NewTask.vue'
-// import EventBus from '@/eventBus'
+import EventBus from '@/eventBus'
 
 export default {
 
@@ -25,12 +25,20 @@ export default {
 	},
 	methods: {
 		addTask(name) {
-			console.log('caiu aquiii')
+			var duplicatedWords = this.taskList.filter(task => task.name === name)
+			if(duplicatedWords.length == 0) {
 				this.taskList.push({
 					name: name,
 					pending: true,
-				}) 
-		}
+				})
+			} 
+		},
+	},
+	created() {
+		EventBus.receiveDeletedTask( name => {
+			const position = this.taskList.map(task => task.name).indexOf(name)
+			this.taskList.splice(position, 1)
+		})
 	},
 }
 </script>

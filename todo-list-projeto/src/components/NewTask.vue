@@ -1,12 +1,11 @@
 <template>
     <div class="new-task">
-        <input v-model="name" type="text" />
+        <input v-model="name" @keydown.enter="add" type="text" />
         <button @click="add()">+</button>
     </div>
 </template>
 
 <script>
-// import EventBus from '@/eventBus'
 
 export default {
     data() {
@@ -16,9 +15,8 @@ export default {
     },
     methods: {
         add(){
-            // EventBus.sendTask(this.task)
             this.$emit('sendTask', this.name)
-            // this.task.name = ''
+            this.name = ''
         }
     },
 
