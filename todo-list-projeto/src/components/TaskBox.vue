@@ -1,5 +1,5 @@
 <template>
-    <div class="box pending" :class="{done: !task.pending}">
+    <div class="box pending" :class="{done: !task.pending}" @click="changePending">
         {{ task.name }}
         <span class="close" @click="deleteTask">x</span>
     </div>
@@ -18,6 +18,9 @@ export default {
     methods: {
         deleteTask(){
             EventBus.sendDeletedTask(this.task.name);
+        },
+        changePending(){
+            this.task.pending = !this.task.pending
         }
     },
 }
@@ -34,6 +37,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .done {
