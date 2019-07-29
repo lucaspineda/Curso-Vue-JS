@@ -2,6 +2,7 @@
 	<div id="app">
 		<h1>Tarefas</h1>
 		<NewTask @sendTask="addTask"/>
+		<TaskProgress :progress="progress" />
 		<TaskGrid :taskList="taskList" />
 	</div>
 </template>
@@ -10,11 +11,12 @@
 
 import TaskGrid from './components/TaskGrid.vue'
 import NewTask from './components/NewTask.vue'
+import TaskProgress from './components/TaskProgress.vue'
 import EventBus from '@/eventBus'
 
 export default {
 
-	components: { TaskGrid, NewTask },
+	components: { TaskGrid, NewTask, TaskProgress },
 	data(){
 		return {
 			taskList: [
@@ -33,12 +35,19 @@ export default {
 				})
 			} 
 		},
+		progress(){
+			var doneTasks = this.taskList.filter(task => task.pending === false)
+			var totalPercentage = doneTasks.length / this.taskList.length * 100
+			return totalPercentage;
+		}
 	},
 	created() {
+
 		EventBus.receiveDeletedTask( name => {
 			const position = this.taskList.map(task => task.name).indexOf(name)
 			this.taskList.splice(position, 1)
 		})
+		
 	},
 }
 </script>
