@@ -41,12 +41,23 @@ export default {
 			return totalPercentage;
 		}
 	},
+	watch: {
+		taskList: {
+			deep: true,
+			handler(){
+				localStorage.setItem('taskList', JSON.stringify(this.taskList))
+			}
+		}
+	},
 	created() {
 
 		EventBus.receiveDeletedTask( name => {
 			const position = this.taskList.map(task => task.name).indexOf(name)
 			this.taskList.splice(position, 1)
 		})
+
+		const json = localStorage.getItem('taskList')
+		this.taskList = JSON.parse(json) || []
 		
 	},
 }
