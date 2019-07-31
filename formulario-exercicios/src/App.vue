@@ -38,7 +38,7 @@
 					</select>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
-					<Escolha />
+					<Escolha v-model="escolha"/>
 				</Rotulo>
 				<hr>
 				<button>Enviar</button>
@@ -71,7 +71,7 @@
 					<span>  {{ prioridade }}</span>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
-					<span>???</span>
+					<span>{{ escolha }}</span>
 				</Rotulo>
 			</div>
 		</div>
@@ -83,6 +83,7 @@ import Rotulo from './components/Rotulo.vue'
 import Escolha from './components/Escolha.vue'
 
 export default {
+
 	name: 'app',
 	components: { Rotulo, Escolha },
 	data() {
@@ -100,7 +101,9 @@ export default {
 				email: '',
 				senha: '',
 				idade: 25
-			}
+			},
+			escolha: true,
+
 		}
 	},
 }
