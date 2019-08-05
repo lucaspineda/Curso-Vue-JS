@@ -4,12 +4,19 @@
 		<hr>
 		<p v-text="'usando v-text'"></p>
 		<hr>
-		<p v-destaque>criando diretiva personalizada</p>
+		<p v-destaque="cor">criando diretiva personalizada</p>
+		<hr>
+		<p v-destaque:fundo="'lightblue'">criando diretiva personalizada</p> 
 	</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {
+			cor: 'red'
+		}
+	},
 	
 }
 </script>

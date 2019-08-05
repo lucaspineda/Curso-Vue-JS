@@ -4,8 +4,14 @@ import App from './App.vue'
 Vue.config.productionTip = false
 
 Vue.directive('destaque', { 
-	bind(el) {
-		el.style.backgroundColor = 'lightgreen'
+	bind(el, binding, vnode) {
+		// el.style.backgroundColor = 'lightgreen'
+		if (binding.arg === 'fundo') {
+			el.style.backgroundColor = binding.value	
+		} else {
+			el.style.color = binding.value
+		}
+
 	}
 })
 
