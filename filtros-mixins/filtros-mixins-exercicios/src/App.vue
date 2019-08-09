@@ -2,12 +2,21 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
-		<p>432694</p>
+		<p>{{ cpf | cpf | inverter}}</p>
 	</div>
 </template>
 
 <script>
 export default {
+	filters: {
+		cpf(valor){
+			const arr = valor.split('')
+			arr.splice(3,0,'.')
+			arr.splice(6,0,'.')
+			arr.splice(11,0,'-')
+			return arr.join('')
+		}
+	},
 	data() {
 		return {
 			cpf: '43269499884'
