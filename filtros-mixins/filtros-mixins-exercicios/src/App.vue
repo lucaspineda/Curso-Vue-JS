@@ -2,12 +2,26 @@
 	<div id="app">
 		<h1>Filtros & Mixins</h1>
 		<hr>
-		<p>{{ cpf | cpf | inverter}}</p>
+		<p>{{ cpfMeu | cpf | inverter}}</p>
+		<input type="text" :value="cpfMeu | cpf | inverter">
+		<hr>
+		<Frutas />
+		<hr>
+		<div>
+			<ul>
+				<li v-for="fruta in frutas" :key="fruta"> {{ fruta }}</li>
+			</ul>
+			<input type="text" @keydown.enter="add" v-model="fruta">
+    	</div>
 	</div>
 </template>
 
 <script>
+import Frutas from './Frutas'
 export default {
+	components: {
+		Frutas,
+	},
 	filters: {
 		cpf(valor){
 			const arr = valor.split('')
@@ -19,9 +33,17 @@ export default {
 	},
 	data() {
 		return {
-			cpf: '43269499884'
+			cpfMeu: '77269499844',
+			fruta: '',
+            frutas: ['banana', 'maça', 'laranja'],
 		}
 	},
+    methods: {
+        add(){
+            this.frutas.push(this.fruta);
+            this.fruta = ''
+        }
+    },
 
 }
 </script>
