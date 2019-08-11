@@ -7,6 +7,12 @@
 <script>
 
 export default {
+	data() {
+		return {
+			msg: 'esta é a mensagem',
+			exibir: false
+		}
+	},
 
 }
 </script>
