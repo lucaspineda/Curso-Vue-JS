@@ -10,7 +10,18 @@
 
 			<hr>
 			<button @click="salvar">Salvar</button>
+			<button @click="getUsuarios">Pegar usuarios</button>
+
 		</b-card>
+
+		<b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
+
+			Nome: {{ usuario.nome }} <br>
+			email: {{ usuario.email }} <br>
+			id: {{ id }} <br>
+
+
+		</b-list-group-item>
 
 	</div>
 </template>
@@ -19,10 +30,11 @@
 export default {
 	data() {
 		return {
-			usuarios: {
-				nome: '',
-				email: ''
-			}
+			usuarios: [],
+			// usuario: {
+			// 	nome: '',
+			// 	email: ''
+			// }
 		}
 	},
 	methods: {
@@ -33,6 +45,12 @@ export default {
 				this.usuarios.email = ''
 			})
 		},
+		getUsuarios() {
+			this.$http('usuarios.json')
+			.then(resp => {
+				this.usuarios = resp.data
+			})
+		}
 	}
 		// created() {
 	// 	this.$http.post('usuarios.json', {
