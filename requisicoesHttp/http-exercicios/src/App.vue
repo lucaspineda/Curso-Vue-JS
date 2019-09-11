@@ -9,17 +9,12 @@
 				<input type="email" v-model="usuarios.email" placeholder="digite o email">
 
 			<hr>
-			<button @click="salvar">Salvar</button>
+			<button @click="salvar" >Salvar</button>
 			<button @click="obterUsuarios">Obter Usuarios</button>
 
 
 		</b-card>
 		<hr>
-			<b-list-group-item v-for="{usuario, id} in usuarios" :key="id">
-				Nome: {{ usuario.nome }}
-				<br>
-				{{ usuarios.email }}
-			</b-list-group-item>
 
 		<b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
 
@@ -38,13 +33,16 @@ export default {
 	data() {
 		return {
 			usuarios: [],
-			// usuario: {
-			// 	nome: '',
-			// 	email: ''
-			// }
+			usuario: {
+				nome: '',
+				email: ''
+			}
 		}
 	},
 	methods: {
+		teste() {
+			console.log(this.usuarios)
+		},
 		salvar(){
 			this.$http.post('usuarios.json', this.usuarios)
 			.then(() => {
@@ -57,8 +55,8 @@ export default {
 			this.$http('usuarios.json')
 			.then(res => this.usuarios = res.data)
 		}
-	}
-		// created() {
+	},
+	// 	created() {
 	// 	this.$http.post('usuarios.json', {
 	// 		nome: 'Maria',
 	// 		email: 'maria@hotmail.com'
