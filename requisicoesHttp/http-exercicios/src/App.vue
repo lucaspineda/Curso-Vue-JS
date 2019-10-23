@@ -3,10 +3,8 @@
 		<h1>HTTP com Axios</h1>
 		<b-card>
 
-				<input type="text" v-model="usuarios.nome" placeholder="digite o nome">
-
-
-				<input type="email" v-model="usuarios.email" placeholder="digite o email">
+				<input type="text" v-model="usuario.nome" placeholder="digite o nome">
+				<input type="email" v-model="usuario.email" placeholder="digite o email">
 
 			<hr>
 			<button @click="salvar" >Salvar</button>
@@ -17,12 +15,11 @@
 		<hr>
 
 		<b-list-group-item v-for="(usuario, id) in usuarios" :key="id">
-
 			Nome: {{ usuario.nome }} <br>
 			email: {{ usuario.email }} <br>
 			id: {{ id }} <br>
-
-
+			<button @click="carregar(id)"> Carregar </button>
+			<button @click="excluir(id)"> Excluir </button>
 		</b-list-group-item>
 
 	</div>
@@ -33,6 +30,7 @@ export default {
 	data() {
 		return {
 			usuarios: [],
+			id: null,
 			usuario: {
 				nome: '',
 				email: ''
@@ -40,15 +38,27 @@ export default {
 		}
 	},
 	methods: {
-		teste() {
-			console.log(this.usuarios)
+		limpar(){
+			this.usuario.nome = ''
+			this.usuario.email = ''
+			this.id = null
 		},
 		salvar(){
-			this.$http.post('usuarios.json', this.usuarios)
-			.then(() => {
-				this.usuarios.nome = '',
-				this.usuarios.email = ''
-			})
+			const metodo = this.id ? 'patch' : 'post'
+			const finalUrl = this.id ? `/${this.id}.json` : '.json'
+			this.$http[metodo](`usuarios${finalUrl}`, this.usuario). then(() => this.limpar());
+			// this.$http.post('usuarios.json', this.usuario)
+			// .then(() => {
+			// 	this.limpar();
+			// })
+		},
+		carregar(id){
+			this.id = id;
+			this.usuario = { ...this.usuarios[id] }
+
+		},
+		excluir(id){
+			this.$http.delete(`/usuarios/${id}.json`).then( () => this.limpar())
 		},
 
 		obterUsuarios() {
@@ -56,13 +66,6 @@ export default {
 			.then(res => this.usuarios = res.data)
 		}
 	},
-	// 	created() {
-	// 	this.$http.post('usuarios.json', {
-	// 		nome: 'Maria',
-	// 		email: 'maria@hotmail.com'
-	// 	})
-	// 	.then(res => console.log(res))
-	// },
 }
 
 </script>
