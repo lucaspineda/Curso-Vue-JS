@@ -13,7 +13,8 @@ export default new Router({
         component: Inicio
     },
     {
-        path: '/usuario',
-        component: Usuario
+        path: '/usuario/:id',
+        component: Usuario,
+        props: true,
     }]
 })
