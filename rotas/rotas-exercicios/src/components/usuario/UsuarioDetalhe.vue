@@ -3,7 +3,9 @@
         <h3>Usuário Detalhe</h3>
         <p><strong>Código:</strong> {{ id }}</p>
         <!-- :to="`/usuario/${id}/editar`" -->
-        <router-link tag="button" primario :to="`/usuario/${id}/editar`">
+        <router-link tag="button" primario 
+            :to="{ name: 'editarUsuario', params: { id }, query: {completo: true, lang: 'pt'},
+            hash: '#rodape' }">
             Editar
         </router-link>
     </div>
@@ -12,6 +14,12 @@
 <script>
 export default {
     props: ['id'],
+    beforeRouteEnter (to, from, next) {
+        console.log('dentro do componente usu detalhe')
+        next((vm => {
+            console.log(vm.id)
+        }))
+    }
     // beforeRouteEnter(to, from, next) {
     //     // console.log(this.id)
     //     console.log('dentro do componente -> usuário detalhe')
