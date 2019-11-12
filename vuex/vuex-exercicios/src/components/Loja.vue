@@ -11,6 +11,7 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
 
 export default {
     data() {
@@ -21,6 +22,7 @@ export default {
         }
     },
     methods: {
+        // ...mapActions(['adicionarProduto']),
         adicionar() {
             const produto = {
                 id: this.sequencia,
@@ -32,7 +34,9 @@ export default {
             // eslint-disable-next-line
             console.log(produto)
 
-            this.$store.state.produtos.push(produto)
+            // this.$store.state.produtos.push(produto)
+            // this.adicionarProduto(produto)
+            this.$store.dispatch('adicionarProduto', produto)
         }
     }
 }
