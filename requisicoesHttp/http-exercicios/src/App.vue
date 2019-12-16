@@ -52,14 +52,13 @@ export default {
 			const metodo = this.id ? 'patch' : 'post'
 			const finalUrl = this.id ? `/${this.id}.json` : '.json'
 			this.$http[metodo](`usuarios${finalUrl}`, this.usuario)
-				.then(() => {
-					this.limpar();
-					this.mensagens.push({
-						texto: "Operação realizada com sucesso",
-						tipo: 'success'
-					})
+			.then(() => {
+				this.limpar();
+				this.mensagens.push({
+					texto: "Salvo com sucesso",
+					tipo: 'success'
 				})
-				
+			})
 		},
 		carregar(id){
 			this.id = id;
@@ -67,8 +66,16 @@ export default {
 
 		},
 		excluir(id){
-			this.$http.delete(`/usuarios/${id}`)
-			.then( () => this.limpar())
+			this.$http.delete(`/usuarios/${id}.json`)
+			.then(() => {
+				this.mensagens.push({
+					texto: "Deletado com sucesso",
+					tipo: 'success'
+				})
+				this.limpar()
+				this.obterUsuarios()
+				
+				})
 			.catch(() => {
 				this.mensagens.push({
 					texto: 'ocorreu um erro',

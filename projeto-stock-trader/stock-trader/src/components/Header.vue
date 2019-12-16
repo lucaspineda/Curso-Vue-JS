@@ -1,3 +1,4 @@
+
 <template>
     <v-toolbar>
         <v-toolbar-title>
@@ -19,7 +20,31 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
+    data() {
+        return {
+            
+        }
+    },
+    created() {
+        // axios.get('https://projeto-stock-trader.firebaseio.com/')
+        // .then(() =>{
+        //     alert('alo')
+        // })
+
+        axios.post('https://projeto-stock-trader.firebaseio.com/usuarios.json', {
+            nome: 'Maria'
+        }).then(() => {
+            alert('teste')
+        })
+
+        axios.get('https://projeto-stock-trader.firebaseio.com/usuarios.json').then(() => {
+            alert('testee')
+        })
+    },
 
 }
 </script>

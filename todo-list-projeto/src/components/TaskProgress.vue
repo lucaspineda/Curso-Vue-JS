@@ -9,7 +9,7 @@
 export default {
     props: {
         progress: {
-            // type: float,
+            type: Number,
             required: true,
         }
     },

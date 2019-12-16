@@ -1,7 +1,7 @@
 <template>
     <div class="new-task">
         <input v-model="name" @keydown.enter="add" type="text" />
-        <button @click="add()">+</button>
+        <button @click="add()">Adicionar</button>
     </div>
 </template>
 
@@ -15,8 +15,12 @@ export default {
     },
     methods: {
         add(){
+            if(this.name === ''){
+                alert('Digite uma tarefa')
+            } else {
             this.$emit('sendTask', this.name)
             this.name = ''
+            }
         }
     },
 

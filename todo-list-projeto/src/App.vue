@@ -37,7 +37,7 @@ export default {
 		},
 		progress(){
 			var doneTasks = this.taskList.filter(task => task.pending === false)
-			var totalPercentage = doneTasks.length / this.taskList.length * 100
+			var totalPercentage = (doneTasks.length / this.taskList.length * 100) || 0
 			return totalPercentage;
 		}
 	},
