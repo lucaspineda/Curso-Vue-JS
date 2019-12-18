@@ -21,7 +21,7 @@
 
 <script>
 
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
     data() {
@@ -35,15 +35,15 @@ export default {
         //     alert('alo')
         // })
 
-        axios.post('https://projeto-stock-trader.firebaseio.com/usuarios.json', {
-            nome: 'Maria'
-        }).then(() => {
-            alert('teste')
-        })
+        // axios.post('https://projeto-stock-trader.firebaseio.com/usuarios.json', {
+        //     nome: 'Maria'
+        // }).then(() => {
+        //     alert('teste')
+        // })
 
-        axios.get('https://projeto-stock-trader.firebaseio.com/usuarios.json').then(() => {
-            alert('testee')
-        })
+        // axios.get('https://projeto-stock-trader.firebaseio.com/usuarios.json').then(() => {
+        //     alert('testee')
+        // })
     },
 
 }
