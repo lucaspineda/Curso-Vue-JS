@@ -14,7 +14,7 @@
         <v-toolbar-items>
             <v-btn text>FINALIZAR DIA</v-btn>
             <v-btn text>SALVAR E CARREGAR</v-btn>
-            <v-btn text>SALDO:</v-btn>
+            <span class="balance">SALDO: {{ balance | formatBalance }}</span>
         </v-toolbar-items>
     </v-toolbar>
 </template>
@@ -45,10 +45,26 @@ export default {
         //     alert('testee')
         // })
     },
+    computed: {
+        balance() {
+            return this.$store.state.balance;
+        }
+    },
+    filters: {
+        formatBalance(balance) {
+            return '$' + (Math.round(balance * 100) / 100).toFixed(2);
+        }
+    },
 
 }
 </script>
 
-<style>
+<style scoped>
 
+    .balance {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+    
 </style>

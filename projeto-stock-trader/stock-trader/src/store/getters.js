@@ -1,0 +1,1 @@
+export const getSaldo = state => state.saldo
