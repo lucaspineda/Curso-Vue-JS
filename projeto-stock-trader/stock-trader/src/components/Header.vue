@@ -6,7 +6,11 @@
             <span>TRADER</span>
         </v-toolbar-title>
         <v-toolbar-items>
-            <v-btn text>INÍCIO</v-btn>
+            <v-btn text>
+                <router-link to="/stocks" tag="div" active-class="active">
+                    INÍCIO
+                </router-link>
+            </v-btn>         
             <v-btn text>PORTFÓLIO</v-btn>
             <v-btn text>AÇÕES</v-btn>
         </v-toolbar-items>
