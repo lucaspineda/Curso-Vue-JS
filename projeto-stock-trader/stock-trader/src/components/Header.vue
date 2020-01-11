@@ -6,13 +6,9 @@
             <span>TRADER</span>
         </v-toolbar-title>
         <v-toolbar-items>
-            <v-btn text>
-                <router-link to="/stocks" tag="div" active-class="active">
-                    INÍCIO
-                </router-link>
-            </v-btn>         
-            <v-btn text>PORTFÓLIO</v-btn>
-            <v-btn text>AÇÕES</v-btn>
+            <v-btn text to="/">INÍCIO</v-btn>         
+            <v-btn text to="/portfolio">PORTFÓLIO</v-btn>
+            <v-btn text to="/stocks">AÇÕES</v-btn>
         </v-toolbar-items>
         <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -54,11 +50,11 @@ export default {
             return this.$store.state.balance;
         }
     },
-    filters: {
-        formatBalance(balance) {
-            return '$' + (Math.round(balance * 100) / 100).toFixed(2);
-        }
-    },
+    // filters: {
+    //     formatBalance(balance) {
+    //         return '$' + (Math.round(balance * 100) / 100).toFixed(2);
+    //     }
+    // },
 
 }
 </script>
