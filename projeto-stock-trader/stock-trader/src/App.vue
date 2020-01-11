@@ -1,8 +1,12 @@
 <template>
-  <div id="app">
-    <Header />
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <div id="app">
+      <Header />
+      <div class="box-screen">
+        <router-view></router-view>
+      </div>
+    </div>
+  </v-app>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="box-screen">
+    <div>
         <h1 class="display-3">Negocie e Consulte suas Ações</h1>
         <span class="balance-title">Seu Saldo: </span>
         <span> {{ balance | formatBalance}} </span>
