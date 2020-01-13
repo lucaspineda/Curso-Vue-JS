@@ -4,8 +4,13 @@ import store from './store'
 import router from './router'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify';
+import axios from 'axios'
 
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
+
+// axios.get('https://projeto-stock-trader.firebaseio.com')
+//                 .then(alert('alo'))
 
 Vue.filter('formatBalance', function (balance) {
     return 'R$ ' + (Math.round(balance * 100) / 100).toFixed(2);

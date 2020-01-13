@@ -13,7 +13,7 @@
         <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn text>FINALIZAR DIA</v-btn>
-            <v-btn text>SALVAR E CARREGAR</v-btn>
+            <v-btn text @click="saveData">SALVAR E CARREGAR</v-btn>
             <span class="balance">SALDO: {{ balance | formatBalance }}</span>
         </v-toolbar-items>
     </v-toolbar>
@@ -49,6 +49,14 @@ export default {
         balance() {
             return this.$store.state.balance;
         }
+    },
+    methods: {
+        saveData() {
+                this.$http.put('https://projeto-stock-trader.firebaseio.com/data.json', this.balance)
+                .then(alert(this.balance))
+                
+                
+            }
     },
     // filters: {
     //     formatBalance(balance) {
