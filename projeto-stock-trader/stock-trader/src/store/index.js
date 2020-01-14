@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    balance: 93.000
+    balance: 100.00
   },
   mutations: {
   },

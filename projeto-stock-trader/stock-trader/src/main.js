@@ -4,9 +4,9 @@ import store from './store'
 import router from './router'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify';
-import axios from 'axios'
+import './plugins/axios'
 
-Vue.prototype.$http = axios
+// Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 // axios.get('https://projeto-stock-trader.firebaseio.com')
