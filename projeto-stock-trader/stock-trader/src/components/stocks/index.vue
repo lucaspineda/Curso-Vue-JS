@@ -1,25 +1,22 @@
 <template>
-    <v-card color="#fff" max-width="400">
-        <v-card tile class="green darken-3 white--text">
-            <v-card-title>
-                <span class="title font-weight-light">BMW (Preço: R$ 89.00)</span>
-            </v-card-title>
-        </v-card>
-        <v-card class="sub-card">
-            <v-text-field
-                type="number"
-                label="Quantidade"
-                v-model="quantity"
-            ></v-text-field>
-        </v-card>
-    </v-card>
+    <div class="cards-box">
+        <Stock v-for="stock in stocks" :key="stock.name" class="mr-3 mb-3" xs12 md6 lg4/>
+    </div>
 </template>
 
 <script>
+
+import Stock from './stock'
+
 export default {
+    components: {
+        Stock
+    },
+
     data() {
         return {
             quantity: 0,
+            stocks: this.$store.state.stocks.stocks
         }
     },
 
@@ -27,8 +24,16 @@ export default {
 </script>
 
 <style scoped>
-.sub-card {
-    padding: 24px;
-}
+
+    .cards-box {
+        display: flex;
+        flex-wrap: wrap;        
+    }
+    .stock {
+        margin: 0 16px 16px 0;
+        max-width: 33%;
+        flex-basis: 33%;
+        flex-grow: 0;
+    }
 
 </style>
