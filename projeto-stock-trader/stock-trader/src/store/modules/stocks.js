@@ -3,11 +3,11 @@ export default {
     state: {
         stocks: [{
             name: 'BMW',
-            price: 0
+            price: 566
         },
         {
             name: 'Google',
-            price: 0
+            price: 55
         },
         {
             name: 'Apple',
@@ -15,32 +15,17 @@ export default {
         },
         {
             name: 'Twitter',
-            price: 0
+            price: 88
         },
         {
-            name: 'Facebook',
-            price: 0
-        },
-        {
-            name: 'Facebook',
-            price: 0
-        },
-        {
-            name: 'Facebook',
-            price: 0
-        },{
-            name: 'Facebook',
-            price: 0
-        },{
-            name: 'Facebook',
-            price: 0
-        },{
-            name: 'Facebook',
-            price: 0
-        },{
             name: 'Facebook',
             price: 0
         },
         ]
+    },
+    getters: {
+        getStocks(state) {
+            return state.stocks
+        }
     }
 }

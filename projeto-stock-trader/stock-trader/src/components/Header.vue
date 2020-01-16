@@ -13,20 +13,8 @@
         <v-spacer></v-spacer>
         <v-toolbar-items>
             <v-btn text>FINALIZAR DIA</v-btn>
-            <v-menu offset-y>
-                <template v-slot:activator="{ on }">
-                    <v-btn text v-on="on">Salvar & Carregar</v-btn>
-                </template>
-                <v-list>
-                    <v-list-item @click="saveData">
-                        <v-list-item-title>SALVAR DADOS</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="loadData">
-                        <v-list-item-title>CARREGAR DADOS</v-list-item-title>
-                    </v-list-item>
-                </v-list>
-            </v-menu>
-            <span class="balance">SALDO: {{ balance | formatBalance }}</span>
+            <v-btn text>ZERAR SIMULAÇÃO</v-btn>
+            <span class="balance">SALDO: {{ allData.balance | formatBalance }}</span>
         </v-toolbar-items>
     </v-toolbar>
 </template>
@@ -34,18 +22,19 @@
 <script>
 
 // import axios from 'axios'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
         return {
-            
         }
     },
     created() {
-        // axios.get('https://projeto-stock-trader.firebaseio.com/')
-        // .then(() =>{
-        //     alert('alo')
-        // })
+
+        /* eslint-disable no-console */
+        console.log(this.allData);
+        /* eslint-enable no-console */
+        this.loadDataLocal()
 
         // axios.post('https://projeto-stock-trader.firebaseio.com/usuarios.json', {
         //     nome: 'Maria'
@@ -58,17 +47,29 @@ export default {
         // })
     },
     computed: {
-        balance() {
-            return this.$store.state.balance;
-        }
+        allData() {
+            return {
+                balance: this.$store.state.balance,
+                stocks: this.$store.state.stocks.stocks,
+                portfolio: []
+            }
+        },
     },
     methods: {
+        ...mapActions(['loadData']),
         saveData() {
-                this.$http.put('balance.json', this.balance)
-                .then(alert(this.balance))
+                this.$http.put('data.json', this.allData)
+                .then(
+                    /* eslint-disable no-console */
+                    console.log(this.allData)
+                    /* eslint-enable no-console */
+                )
             },
-            loadData() {
-
+            loadDataLocal() {
+                this.loadData()
+                /* eslint-disable no-console */
+        console.log('load')
+        /* eslint-enable no-console */
             }
 
 

@@ -1,6 +1,9 @@
 <template>
     <div class="cards-box">
-        <Stock v-for="stock in stocks" :key="stock.name" class="mr-3 mb-3" xs12 md6 lg4/>
+        <Stock v-for="stock in stocks" 
+            :key="stock.name" 
+            class="mr-3 mb-3" xs12 md6 lg4
+            :stock="stock"/>
     </div>
 </template>
 

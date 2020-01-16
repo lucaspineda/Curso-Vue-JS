@@ -2,7 +2,7 @@
   <v-card color="#fff">
             <v-card tile class="green darken-3 white--text">
                 <v-card-title>
-                    <span class="title font-weight-light">BMW (Preço: R$ 89.00)</span>
+                    <span class="title font-weight-light">{{ stock.name }} (Preço: {{ stock.price | formatBalance}})</span>
                 </v-card-title>
             </v-card>
             <v-card tile class="sub-card">
@@ -11,16 +11,28 @@
                     label="Quantidade"
                     v-model="quantity"
                 ></v-text-field>
-                <v-btn class="green darken-3 white--text buy-btn" :disabled="BtnDisabled">Comprar</v-btn>
+                <v-btn class="green darken-3 white--text buy-btn" 
+                :disabled="BtnDisabled"
+                @click="buyStockLocal(quantity, stock.price)">Comprar</v-btn>
             </v-card>
         </v-card>
 </template>
 
 <script>
+
+import { mapActions } from 'vuex'
+
 export default {
+    props: ['stock'],
     data() {
         return {
             quantity: 0,
+        }
+    },
+    methods: {
+        ...mapActions(['buyStock']),
+        buyStockLocal(quantity, price) {
+            this.buyStock({quantity, price})
         }
     },
     computed: {
