@@ -1,9 +1,10 @@
 export default {
     namespace: true,
     state: {
-        stocks: [{
+        stocks: [
+        {
             name: 'BMW',
-            price: 566
+            price: 23
         },
         {
             name: 'Google',
@@ -24,8 +25,13 @@ export default {
         ]
     },
     getters: {
-        getStocks(state) {
+        stocks(state) {
             return state.stocks
+        }
+    },
+    mutations: {
+        setStocks(state, payload) {
+            state = payload
         }
     }
 }
