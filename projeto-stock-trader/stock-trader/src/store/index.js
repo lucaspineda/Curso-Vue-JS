@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import stocks from './modules/stocks'
-import acquiredStocks from './modules/portfolio'
 
 
 import * as getters from './getters'
@@ -28,7 +27,6 @@ export default new Vuex.Store({
             if(data) {
                 commit('setBalance', data.balance)
                 commit('setStocks', data.stocks)
-                commit('setAcquiredStocks', data.acquiredStocks)
             }
         })
     },
@@ -42,9 +40,6 @@ export default new Vuex.Store({
         if(payload.stocks == null) {
             payload.stocks = this.getters.stocks
         }
-        if(payload.acquiredStocks == null) {
-          payload.acquiredStocks = this.getters.acquiredStocks
-        }
         
         Vue.prototype.$http.put('data.json', payload)
         .then(resp => {
@@ -52,7 +47,6 @@ export default new Vuex.Store({
             if(data) {
                 commit('setBalance', data.balance)
                 commit('setStocks', data.stocks)
-                commit('setAcquiredStocks', data.acquiredStocks)
             }
         })
     },
@@ -68,5 +62,5 @@ export default new Vuex.Store({
         dispatch('saveData', {balance, stocks})
     }
   },
-  modules: { stocks, acquiredStocks }
+  modules: { stocks }
 })

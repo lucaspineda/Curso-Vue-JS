@@ -1,5 +1,5 @@
 <template>
-  <v-card color="#fff">
+  <v-card v-if="stock.quantity > 0" color="#fff">
             <v-card tile class="blue darken-3 white--text">
                 <v-card-title>
                     <span class="title font-weight-light">
