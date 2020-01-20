@@ -27,6 +27,7 @@ export default {
     data() {
         return {
             quantity: 0,
+            balance: this.$store.state.balance
         }
     },
     methods: {
@@ -40,8 +41,8 @@ export default {
     },
     computed: {
         BtnDisabled: function() {
-            let value = (this.quantity > 0) ?  false : true
-
+            let value = (this.quantity > 0 &&
+            (this.quantity * this.stock.price <= this.balance)) ?  false : true
             return value
         }
     },

@@ -71,6 +71,9 @@ export default {
                 return Math.round(random)
             },
             resetSimulation() {
+                this.allData.stocks.forEach(stock => {
+                    stock.quantity = 0
+                })
                 this.$store.dispatch('saveData', {balance: 1000})
             }
     },
