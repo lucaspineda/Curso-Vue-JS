@@ -1,8 +1,11 @@
 <template>
   <v-card color="#fff">
-            <v-card tile class="green darken-3 white--text">
+            <v-card tile class="blue darken-3 white--text">
                 <v-card-title>
-                    <span class="title font-weight-light">{{ stock.name }} (Preço: {{ stock.price | formatBalance}})</span>
+                    <span class="title font-weight-light">
+                        {{ stock.name }} (Preço: {{ stock.price | formatBalance}} |
+                        Qtde: {{ stock.quantity }} )
+                    </span>
                 </v-card-title>
             </v-card>
             <v-card tile class="sub-card">
@@ -11,16 +14,15 @@
                     label="Quantidade"
                     v-model="quantity"
                 ></v-text-field>
-                <v-btn class="green darken-3 white--text buy-btn" 
+                <v-btn class="blue darken-3 white--text buy-btn" 
                 :disabled="BtnDisabled"
-                @click="buyStockLocal(quantity, stock.price)">Comprar</v-btn>
+                @click="sellStock(stock.price, quantity)">Vender</v-btn>
             </v-card>
         </v-card>
 </template>
 
 <script>
 
-import { mapActions } from 'vuex'
 
 export default {
     props: ['stock'],
@@ -30,21 +32,24 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['buyStock']),
-        buyStockLocal(quantity, price) {
+        sellStock(soldPrice, quantity) {
             quantity = parseInt(quantity)
-            this.stock.quantity += quantity
-            this.buyStock({quantity, price})
+            let newBalance = this.$store.state.balance + (soldPrice * quantity)
+            this.stock.quantity -= this.quantity
+
             this.quantity = 0
+            this.$store.dispatch('saveData', {balance: newBalance })
+
         }
     },
     computed: {
         BtnDisabled: function() {
-            let value = (this.quantity > 0) ?  false : true
-
+            let value = (this.quantity > 0  &&
+            this.quantity <= this.stock.quantity) ?  false : true
             return value
         }
-    },
+    }
+    
 }
 </script>
 

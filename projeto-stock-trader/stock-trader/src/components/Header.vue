@@ -12,7 +12,7 @@
         </v-toolbar-items>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-btn text>FINALIZAR DIA</v-btn>
+            <v-btn @click="endDay" text>FINALIZAR DIA</v-btn>
             <v-btn @click="resetSimulation" text>ZERAR SIMULAÇÃO</v-btn>
             <span class="balance">SALDO: {{ allData.balance | formatBalance }}</span>
         </v-toolbar-items>
@@ -30,6 +30,8 @@ export default {
         }
     },
     created() {
+
+        // this.$store.dispatch('saveData', {})
         this.loadDataLocal()
 
         // axios.post('https://projeto-stock-trader.firebaseio.com/usuarios.json', {
@@ -53,19 +55,20 @@ export default {
     },
     methods: {
         ...mapActions(['loadData']),
-        saveData() {
-                this.$http.put('data.json', this.allData)
-                .then(
-                    /* eslint-disable no-console */
-                    console.log(this.allData)
-                    /* eslint-enable no-console */
-                )
-            },
+        
             loadDataLocal() {
                 this.loadData()
             },
             endDay() {
+                this.allData.stocks.forEach(stock => {
+                    stock.price += this.getRandom(-5, 5)
+                });
 
+                this.$store.dispatch('saveData', {stocks: this.allData.stocks})
+            },
+            getRandom(min, max){
+                const random = Math.random() * (max - min) + min
+                return Math.round(random)
             },
             resetSimulation() {
                 this.$store.dispatch('saveData', {balance: 1000})

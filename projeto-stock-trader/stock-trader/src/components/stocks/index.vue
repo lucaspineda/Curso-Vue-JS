@@ -16,10 +16,17 @@ export default {
         Stock
     },
 
+    created() {
+    },
+
     data() {
         return {
             quantity: 0,
-            stocks: this.$store.state.stocks.stocks
+        }
+    },
+    computed: {
+        stocks() {
+            return this.$store.state.stocks.stocks
         }
     },
 

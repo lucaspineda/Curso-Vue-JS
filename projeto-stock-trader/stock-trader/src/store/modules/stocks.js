@@ -2,26 +2,11 @@ export default {
     namespace: true,
     state: {
         stocks: [
-        {
-            name: 'BMW',
-            price: 23
-        },
-        {
-            name: 'Google',
-            price: 55
-        },
-        {
-            name: 'Apple',
-            price: 0
-        },
-        {
-            name: 'Twitter',
-            price: 88
-        },
-        {
-            name: 'Facebook',
-            price: 0
-        },
+            {
+                name: 'Facebook',
+                price: 20,
+                quantity: 0
+            }
         ]
     },
     getters: {
@@ -31,7 +16,8 @@ export default {
     },
     mutations: {
         setStocks(state, payload) {
-            state = payload
+            state.stocks = payload
+            // console.log(state.stocks)
         }
     }
 }
