@@ -34,15 +34,15 @@ export default {
 
 <style scoped>
 
-    .cards-box {
+    /* .cards-box {
         display: flex;
         flex-wrap: wrap;        
-    }
-    .stock {
+    } */
+    /* .stock {
         margin: 0 16px 16px 0;
         max-width: 33%;
         flex-basis: 33%;
         flex-grow: 0;
-    }
+    } */
 
 </style>
