@@ -4,7 +4,7 @@
         <v-sheet :elevation="6" class="pa-2 primary d-flex">
             <v-icon class="white--text mr-3">info</v-icon>
             <span class="headline white--text font-weight-light">
-                Você pode Salvar & Carregar os Dados
+                Seus dados são salvos automaticamente após compra e venda de ações
             </span>
         </v-sheet>
         <v-sheet :elevation="6" class="pa-2 success darken-1 mt-3 d-flex">

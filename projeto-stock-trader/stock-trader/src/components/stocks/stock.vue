@@ -1,5 +1,6 @@
 <template>
-  <v-card color="#fff">
+    <v-flex class="pr-3 pb-3" xs12 md6 lg4>
+        <v-card color="#fff">
             <v-card tile class="green darken-3 white--text">
                 <v-card-title>
                     <span class="title font-weight-light">{{ stock.name }} (Preço: {{ stock.price | formatBalance}})</span>
@@ -16,6 +17,7 @@
                 @click="buyStockLocal(quantity, stock.price)">Comprar</v-btn>
             </v-card>
         </v-card>
+    </v-flex>
 </template>
 
 <script>

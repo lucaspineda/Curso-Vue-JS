@@ -1,10 +1,9 @@
 <template>
-    <div class="cards-box">
+    <v-layout row wrap>
         <Stock v-for="stock in stocks" 
-            :key="stock.name" 
-            class="mr-3 mb-3" xs12 md6 lg4
+            :key="stock.name"
             :stock="stock"/>
-    </div>
+    </v-layout>
 </template>
 
 <script>
