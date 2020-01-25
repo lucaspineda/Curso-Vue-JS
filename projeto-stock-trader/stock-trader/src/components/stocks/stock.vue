@@ -43,8 +43,9 @@ export default {
     },
     computed: {
         BtnDisabled: function() {
-            let value = (this.quantity > 0 &&
-            (this.quantity * this.stock.price <= this.balance)) ?  false : true
+            let value = !(this.quantity > 0 &&
+            (this.quantity * this.stock.price <= this.balance) &&
+            Number.isInteger(this.quantity))
             return value
         }
     },
