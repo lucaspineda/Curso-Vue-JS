@@ -12,7 +12,7 @@
                 <v-text-field
                     type="number"
                     label="Quantidade"
-                    v-model="quantity"
+                    v-model.number="quantity"
                 ></v-text-field>
                 <v-btn class="blue darken-3 white--text buy-btn" 
                 :disabled="BtnDisabled"
